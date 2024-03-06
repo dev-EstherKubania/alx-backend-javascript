@@ -1,20 +1,8 @@
-// 1-main.js
-import getFullResponseFromAPI from './1-promise';
-
-// Test with success=true
-getFullResponseFromAPI(true)
-  .then((response) => {
-    console.log(response);
-  })
-  .catch((error) => {
-    console.error(error);
+function getFullResponseFromAPI(success) {
+  return new Promise((resolve, reject) => {
+    if (success) resolve({ status: 200, body: 'Success' });
+    reject(Error('The fake API is not working currently'));
   });
+}
 
-// Test with success=false
-getFullResponseFromAPI(false)
-  .then((response) => {
-    console.log(response);
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+export default getFullResponseFromAPI;
